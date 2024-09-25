@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7dar38kj1n4m"]
+
+[sub_resource type="GDScript" id="GDScript_i3kek"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$HitBox/CollisionShape2D.disabled = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4h5t3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27ggc"]
+
+[node name="DamageBox" type="Node2D"]
+script = SubResource("GDScript_i3kek")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_4h5t3")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(21, 0)
+shape = SubResource("CircleShape2D_27ggc")
