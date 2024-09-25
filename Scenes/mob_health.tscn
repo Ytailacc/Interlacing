@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv85w822t7o8t"]
+
+[ext_resource type="Script" path="res://Scripts/mob_health.gd" id="1_4ttul"]
+[ext_resource type="Texture2D" uid="uid://yfbd3c6algyf" path="res://Sprites/bar_under.png" id="1_gnww4"]
+[ext_resource type="Texture2D" uid="uid://xm1pobiqrv6x" path="res://Sprites/bar_over.png" id="2_o8asn"]
+
+[node name="MobHealth" type="Node2D"]
+script = ExtResource("1_4ttul")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -151.0
+offset_top = 3.0
+offset_right = 151.0
+offset_bottom = 43.0
+max_value = 5.0
+value = 2.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_gnww4")
+texture_progress = ExtResource("2_o8asn")
+tint_progress = Color(0.878123, 0.406499, 0.279314, 1)
+
+[node name="damageText" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -69.0
+offset_right = 50.0
+theme_override_font_sizes/font_size = 50
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
