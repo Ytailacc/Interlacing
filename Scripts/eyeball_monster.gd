@@ -11,6 +11,7 @@ enum {
 
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
+@onready var healthBar = $MobHealth
 var damage = 2
 var direction
 var player
@@ -37,6 +38,7 @@ var state: int = 0:
 
 func _ready() -> void:
 	state = IDLE
+	healthBar.start_parameters(health)
 
 
 func _process(delta: float) -> void:
@@ -119,9 +121,10 @@ func timeOut():
 	timer = true
 
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
 	if state != DEATH and not timer:
 		health -= Global.player_damage
+		healthBar.update_heath(health,Global.player_damage)
 		state = TAKE_HIT
 	else:
 		state = SLIDE

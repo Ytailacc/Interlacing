@@ -15,6 +15,8 @@ const JUMP_VELOCITY = -400.0
 var state = MOVE
 @onready var anim = $AnimatedSprite2D
 @onready var  animPlayer = $AnimationPlayer
+@onready var animDamage = $healthText/DamageAnimation
+@onready var textDamage = $healthText/DamageText
 var health = 10
 var combo = false
 var combo2 = false
@@ -24,6 +26,7 @@ var damage_multiplier = 1
 
 func _ready() -> void:
 	Signals.connect("enemy_attack",Callable(self,"_on_damage_recived"))
+	textDamage.visible = false
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -137,6 +140,10 @@ func _on_damage_recived(enemy_damage):
 	if state != DEATH and state != SLIDE:
 		state = TAKE_HIT
 		health -= enemy_damage
+		textDamage.visible = true
+		textDamage.text = str(enemy_damage)
+		animDamage.stop()
+		animDamage.play("damage_text")
 		print(health)
 
 func death_state():

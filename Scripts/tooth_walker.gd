@@ -10,6 +10,8 @@ enum {
 
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
+@onready var healthBar = $MobHealth
+@export var change_position = [4,-4]
 var damage = 3
 var direction
 var player
@@ -32,7 +34,7 @@ var state: int = 0:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state = IDLE
-
+	healthBar.start_parameters(health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,11 +66,11 @@ func chase_state():
 	direction = (player - self.position).normalized()
 	if direction.x < 0:
 		sprite.flip_h = true
-		sprite.position.x = 4
+		sprite.position.x = change_position[0]
 		$AttackDirection.rotation_degrees = 360
 	elif direction.x > 0:
 		sprite.flip_h = false
-		sprite.position.x = -4
+		sprite.position.x = change_position[1]
 		$AttackDirection.rotation_degrees = 0
 
 func take_hit_state():
@@ -90,4 +92,5 @@ func _on_hit_box_area_entered(_area: Area2D) -> void:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if state != DEATH:
 		health -= Global.player_damage
+		healthBar.update_heath(health,Global.player_damage)
 		state = TAKE_HIT

@@ -11,6 +11,7 @@ enum {
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var healthBar = $MobHealth
+@export var change_position = [4,-4]
 var damage = 2
 var direction
 var player
@@ -31,8 +32,8 @@ var state: int = 0:
 				death_state()
 
 func _ready() -> void:
-	state = IDLE
 	healthBar.start_parameters(health)
+	state = IDLE
 	
 func _process(delta: float) -> void:
 	if not is_on_floor():
@@ -46,7 +47,7 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_attack_range_body_entered(body: Node2D) -> void:
+func _on_attack_range_body_entered(_body: Node2D) -> void:
 	state = ATTACK
 	
 func idle_state():
@@ -65,9 +66,11 @@ func chase_state():
 	direction = (player - self.position).normalized()
 	if direction.x < 0:
 		sprite.flip_h = false
-		$AttackDirection.rotation_degrees = 360
+		sprite.position.x = change_position[1]
+		$AttackDirection.rotation_degrees = 180
 	elif direction.x > 0:
 		sprite.flip_h = true
+		sprite.position.x = change_position[0]
 		$AttackDirection.rotation_degrees = 0
 
 func take_hit_state():
@@ -84,12 +87,12 @@ func death_state():
 	queue_free()
 
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
+func _on_hit_box_area_entered(_area: Area2D) -> void:
 	Signals.emit_signal("enemy_attack",damage)
 	
 
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
 	if state != DEATH:
 		health -= Global.player_damage
 		healthBar.update_heath(health,Global.player_damage)
