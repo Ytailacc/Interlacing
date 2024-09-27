@@ -11,7 +11,7 @@ enum {
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var healthBar = $MobHealth
-@export var change_position = [4,-4]
+@export var change_position = [27,-27]
 var damage = 2
 var direction
 var player
@@ -65,11 +65,11 @@ func attack_state():
 func chase_state():
 	direction = (player - self.position).normalized()
 	if direction.x < 0:
-		sprite.flip_h = false
+		sprite.flip_h = true
 		sprite.position.x = change_position[1]
 		$AttackDirection.rotation_degrees = 180
 	elif direction.x > 0:
-		sprite.flip_h = true
+		sprite.flip_h = false
 		sprite.position.x = change_position[0]
 		$AttackDirection.rotation_degrees = 0
 

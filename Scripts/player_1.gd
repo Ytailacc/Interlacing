@@ -20,7 +20,6 @@ var state = MOVE
 var health = 10
 var combo = false
 var combo2 = false
-var damage_current
 var damage_basic = 2
 var damage_multiplier = 1
 
@@ -152,4 +151,10 @@ func death_state():
 	animPlayer.play("Death")
 	await animPlayer.animation_finished
 	queue_free()
-	#get_tree().change_scene_to_file("")
+	
+func change_scene():
+	if Global.open_scene:
+		get_tree().change_scene_to_file(Global.open_scene.scene_file_path)
+	else:
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	

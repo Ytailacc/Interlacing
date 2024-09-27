@@ -12,6 +12,7 @@ enum {
 @onready var sprite = $AnimatedSprite2D
 @onready var healthBar = $MobHealth
 var damage = 2
+var speed = 100
 var direction
 var player
 var health = 6
@@ -51,18 +52,26 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 	
 func idle_state():
 	animPlayer.play("Idle")
+	velocity.x = 0
 	await get_tree().create_timer(1).timeout
 	$AttackDirection/AttackRange/AttackCollision.disabled = false
-	state = CHASE
+	$AgreZone/CollisionShape2D.disabled = false
 
 func attack_state():
+	velocity.x = 0
 	animPlayer.play("Attack")
 	await animPlayer.animation_finished
 	$AttackDirection/AttackRange/AttackCollision.disabled = true
+	$AgreZone/CollisionShape2D.disabled = true
 	state = IDLE
 
 func chase_state():
-	direction = (player - self.position).normalized()
+	direction = (Global.player_pos - self.position).normalized()
+	velocity.x = direction.x * speed
+	if velocity.x != 0:
+		animPlayer.play("Run")
+	else:
+		animPlayer.play("Idle")
 	if direction.x < 0:
 		sprite.flip_h = false
 		$AttackDirection.rotation_degrees = 360
@@ -94,3 +103,12 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		health -= Global.player_damage
 		healthBar.update_heath(health,Global.player_damage)
 		state = TAKE_HIT
+
+func _on_agre_zone_body_entered(body: Node2D) -> void:
+	if state != DEATH:
+		state = CHASE
+
+
+func _on_agre_zone_body_exited(body: Node2D) -> void:
+	if state != DEATH:
+		state = IDLE
