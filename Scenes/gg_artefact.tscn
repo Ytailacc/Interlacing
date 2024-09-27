@@ -1,8 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://dixpxr45yg57s"]
+[gd_scene load_steps=8 format=3 uid="uid://dixpxr45yg57s"]
 
 [ext_resource type="Texture2D" uid="uid://cyou40mwxswd4" path="res://Sprites/ring_03d.png" id="1_31ik2"]
 
+[sub_resource type="GDScript" id="GDScript_yn56b"]
+script/source = "extends Node2D
+
+@onready var animPlayer = $AnimationPlayer
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	animPlayer.play(\"take_animation\")
+	await animPlayer.animation_finished
+	Global.GG_artifacts += 1
+	queue_free()
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_etkbi"]
+
+[sub_resource type="Animation" id="Animation_84kyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9.53674e-07, 9.53674e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_7p3hk"]
 resource_name = "ring_animation"
@@ -20,28 +59,43 @@ tracks/0/keys = {
 "values": [Vector2(-9.53674e-07, 9.53674e-07), Vector2(-5.68434e-14, 1), Vector2(-2.84217e-14, 5.96046e-08), Vector2(-2.84217e-14, -1), Vector2(-9.53674e-07, 9.53674e-07)]
 }
 
-[sub_resource type="Animation" id="Animation_84kyw"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_yrc4e"]
+resource_name = "take_animation"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-9.53674e-07, 9.53674e-07)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-9.53674e-07, 9.53674e-07), Vector2(-1.13687e-13, -5), Vector2(-6.77626e-21, -11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_is34i"]
 _data = {
 "RESET": SubResource("Animation_84kyw"),
-"ring_animation": SubResource("Animation_7p3hk")
+"ring_animation": SubResource("Animation_7p3hk"),
+"take_animation": SubResource("Animation_yrc4e")
 }
 
 [node name="GG_artefact" type="Node2D"]
+script = SubResource("GDScript_yn56b")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -60,3 +114,5 @@ libraries = {
 "": SubResource("AnimationLibrary_is34i")
 }
 autoplay = "ring_animation"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

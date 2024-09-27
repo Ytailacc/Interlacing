@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxoubd7e2ag54"]
+
+[ext_resource type="Texture2D" uid="uid://yfbd3c6algyf" path="res://Sprites/bar_under.png" id="1_t04rn"]
+[ext_resource type="Texture2D" uid="uid://xm1pobiqrv6x" path="res://Sprites/bar_over.png" id="2_bdvrg"]
+
+[sub_resource type="GDScript" id="GDScript_swkj1"]
+script/source = "extends Node2D
+
+@onready var damageBar = $damageBar
+
+func _ready() -> void:
+	Signals.connect(\"player_health\",Callable(self,\"_player_health_change\"))
+	await get_tree().create_timer(0.001).timeout
+	damageBar.max_value = Global.player_health
+	
+func _player_health_change(new_health):
+	damageBar.value = new_health
+"
+
+[node name="Health" type="Node2D"]
+script = SubResource("GDScript_swkj1")
+
+[node name="damageBar" type="TextureProgressBar" parent="."]
+offset_left = 22.0
+offset_top = 30.0
+offset_right = 258.0
+offset_bottom = 70.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_t04rn")
+texture_progress = ExtResource("2_bdvrg")
+tint_progress = Color(0.872375, 0.340851, 0.280354, 1)

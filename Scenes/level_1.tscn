@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://cjpxb8g1bbdq"]
+[gd_scene load_steps=10 format=4 uid="uid://cjpxb8g1bbdq"]
 
 [ext_resource type="Texture2D" uid="uid://dmgo5qw76j8oc" path="res://TileMap/mainlev_build.png" id="1_atuxw"]
 [ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_uxina"]
 [ext_resource type="PackedScene" uid="uid://ci1mc6cq6cmeu" path="res://Scenes/BG.tscn" id="3_fmp8n"]
 [ext_resource type="PackedScene" uid="uid://bbyf5pti5hayd" path="res://Scenes/player_2.tscn" id="6_1puka"]
 [ext_resource type="PackedScene" uid="uid://dixpxr45yg57s" path="res://Scenes/gg_artefact.tscn" id="6_pc3an"]
-[ext_resource type="PackedScene" uid="uid://b3m773nyxq4ks" path="res://Scenes/stormhead.tscn" id="8_uprsr"]
+[ext_resource type="PackedScene" uid="uid://mf2ffkm44ves" path="res://Scenes/esther_artefact.tscn" id="7_33gdd"]
+[ext_resource type="PackedScene" uid="uid://dxoubd7e2ag54" path="res://Scenes/player_health.tscn" id="8_5nuyc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfo04"]
 texture = ExtResource("1_atuxw")
@@ -955,13 +956,15 @@ offset = Vector2(0, 100)
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 100)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="stormhead" parent="." instance=ExtResource("8_uprsr")]
-position = Vector2(128, 530)
-
-[node name="Player_2" parent="." instance=ExtResource("6_1puka")]
-position = Vector2(463, 529)
-
 [node name="GG_artefact" parent="." instance=ExtResource("6_pc3an")]
 position = Vector2(529, 532)
+
+[node name="Esther_artefact" parent="." instance=ExtResource("7_33gdd")]
+position = Vector2(588, 532)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" parent="UI" instance=ExtResource("8_5nuyc")]
+
+[node name="Player_2" parent="." instance=ExtResource("6_1puka")]
+position = Vector2(396, 529)

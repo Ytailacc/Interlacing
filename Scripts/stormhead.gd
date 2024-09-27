@@ -34,6 +34,7 @@ var state: int = 0:
 
 func _ready() -> void:
 	healthBar.start_parameters(health)
+	
 	state = IDLE
 	
 func _process(delta: float) -> void:
@@ -100,11 +101,11 @@ func _on_hurt_box_area_entered(_area: Area2D) -> void:
 		state = TAKE_HIT
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if state != DEATH:
 		state = CHASE
 
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(_body: Node2D) -> void:
 	if state != DEATH:
 		state = IDLE

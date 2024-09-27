@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bbyf5pti5hayd"]
+[gd_scene load_steps=58 format=3 uid="uid://bbyf5pti5hayd"]
 
 [ext_resource type="Texture2D" uid="uid://bwliwgl5okv8b" path="res://Sprites/idle-2298x3084.png" id="1_80l0a"]
 [ext_resource type="Script" path="res://Scripts/player_2.gd" id="1_cossb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7yfuwpiipe5v" path="res://Sprites/Block.png" id="2_6sh56"]
 [ext_resource type="Texture2D" uid="uid://cma6iw0dtswk4" path="res://Sprites/run-2480x3508.png" id="2_g4wkw"]
 [ext_resource type="Texture2D" uid="uid://qdxwabjde0gt" path="res://Sprites/jump-1725x2033.png" id="2_sk1ab"]
+[ext_resource type="Texture2D" uid="uid://pu31v345qd5g" path="res://Sprites/Punch-2015x2582.png" id="6_ahd38"]
 [ext_resource type="Texture2D" uid="uid://ckuk4v0ohcg8w" path="res://Sprites/Demaged-1.png" id="7_es34n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_guyav"]
@@ -97,6 +98,26 @@ region = Rect2(3450, 2033, 1725, 2033)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8m1y"]
 atlas = ExtResource("2_sk1ab")
 region = Rect2(5175, 2033, 1725, 2033)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28hpp"]
+atlas = ExtResource("6_ahd38")
+region = Rect2(0, 0, 2015, 2582)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7c31"]
+atlas = ExtResource("6_ahd38")
+region = Rect2(2015, 0, 2015, 2582)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxcun"]
+atlas = ExtResource("6_ahd38")
+region = Rect2(4030, 0, 2015, 2582)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ju41"]
+atlas = ExtResource("6_ahd38")
+region = Rect2(0, 2582, 2015, 2582)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evawn"]
+atlas = ExtResource("6_ahd38")
+region = Rect2(2015, 2582, 2015, 2582)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5a2yn"]
 atlas = ExtResource("2_g4wkw")
@@ -218,6 +239,26 @@ animations = [{
 "loop": false,
 "name": &"Jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28hpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7c31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxcun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ju41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evawn")
+}],
+"loop": false,
+"name": &"Punch",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -555,11 +596,10 @@ shape = SubResource("CapsuleShape2D_guyav")
 position = Vector2(0, -2)
 scale = Vector2(0.0131636, 0.0131636)
 sprite_frames = SubResource("SpriteFrames_ygcyv")
-animation = &"Death"
-frame = 6
+animation = &"Jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -43)
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var SPEED = 200
+var SPEED = 150
 const JUMP_VELOCITY = -400.0
 var state = MOVE
 var health = 1
@@ -19,6 +19,7 @@ enum {
 
 func _ready() -> void:
 	Signals.connect("enemy_attack",Callable(self,"_on_damage_recived"))
+	Global.player_health = health
 	textDamage.visible = false
 
 func _physics_process(delta: float) -> void:
@@ -115,6 +116,7 @@ func _on_damage_recived(enemy_damage):
 	if state != DEATH and state != BLOCK:
 		state = TAKE_HIT
 		health -= enemy_damage
+		Signals.emit_signal("player_health",health)
 		textDamage.visible = true
 		textDamage.text = str(enemy_damage)
 		animDamage.stop()
