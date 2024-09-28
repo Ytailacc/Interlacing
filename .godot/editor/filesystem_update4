@@ -3,3 +3,4 @@ res://Scenes/menu.tscn
 res://Scenes/level_2.tscn
 res://Scenes/finlevel_1.tscn
 res://Scenes/finlevel_2.tscn
+res://Scripts/player_2.gd

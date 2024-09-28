@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://chfxneq47vc2h"]
+[gd_scene load_steps=12 format=4 uid="uid://chfxneq47vc2h"]
 
 [ext_resource type="PackedScene" uid="uid://ci1mc6cq6cmeu" path="res://Scenes/BG.tscn" id="1_mn0rf"]
 [ext_resource type="Texture2D" uid="uid://dmgo5qw76j8oc" path="res://TileMap/mainlev_build.png" id="2_ytph0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjvh6wh3aih8i" path="res://Scenes/GG/lastBoss_2.tscn" id="6_c4gt0"]
 [ext_resource type="PackedScene" uid="uid://c8brx0crjng00" path="res://Scenes/Esther/esrher_mobs/Guardian.tscn" id="7_y172c"]
 [ext_resource type="PackedScene" uid="uid://bcrit8atsat7y" path="res://Scenes/Esther/esrher_mobs/Small Monster.tscn" id="8_luixm"]
+[ext_resource type="PackedScene" uid="uid://cvgmnsftt3bn4" path="res://Scenes/GG/gg_mobs/tooth_walker.tscn" id="9_b4ryw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m68ud"]
 texture = ExtResource("2_ytph0")
@@ -1157,3 +1158,6 @@ position = Vector2(2631, 799)
 
 [node name="Enemy3" parent="." instance=ExtResource("8_luixm")]
 position = Vector2(2228, 801)
+
+[node name="Tooth Walker" parent="." instance=ExtResource("9_b4ryw")]
+position = Vector2(2220, 720)

@@ -4,7 +4,7 @@ extends CharacterBody2D
 var SPEED = 150
 const JUMP_VELOCITY = -400.0
 var state = MOVE
-var health = 1
+var health = 15
 var damage = 4
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
