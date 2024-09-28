@@ -24,8 +24,8 @@ script = SubResource("GDScript_swkj1")
 [node name="damageBar" type="TextureProgressBar" parent="."]
 offset_left = 22.0
 offset_top = 30.0
-offset_right = 290.0
-offset_bottom = 97.0
+offset_right = 466.0
+offset_bottom = 141.0
 value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("1_aeu2d")
