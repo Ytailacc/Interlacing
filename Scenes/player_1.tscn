@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dy4kwqlsaiqhh"]
+[gd_scene load_steps=112 format=3 uid="uid://dy4kwqlsaiqhh"]
 
 [ext_resource type="Script" path="res://Scripts/player_1.gd" id="1_ljnjr"]
 [ext_resource type="Texture2D" uid="uid://ct3fwfvvx1pge" path="res://Sprites/water_SpriteSheet_288x128.png" id="2_8ogjp"]
@@ -882,6 +882,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_qk2sv"]
 length = 0.3
@@ -1151,6 +1165,67 @@ size = Vector2(58.5, 27)
 radius = 17.0
 height = 34.0
 
+[sub_resource type="Animation" id="Animation_jgwt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, -32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rq4ux"]
+resource_name = "damage_text"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -32), Vector2(-10, -41)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.861217, 0.522389, 0.39337, 1), Color(0.92618, 0.474118, 0.354167, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j35kp"]
+_data = {
+"RESET": SubResource("Animation_jgwt6"),
+"damage_text": SubResource("Animation_rq4ux")
+}
+
 [node name="Player1" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ljnjr")
@@ -1162,7 +1237,7 @@ shape = SubResource("CapsuleShape2D_2nl8v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(27, -4)
 sprite_frames = SubResource("SpriteFrames_63pgh")
-animation = &"Attack3"
+animation = &"Death"
 autoplay = "Idle"
 offset = Vector2(-28, -43)
 
@@ -1206,5 +1281,24 @@ disabled = true
 position = Vector2(75, 0)
 shape = SubResource("CapsuleShape2D_ulr1a")
 disabled = true
+
+[node name="healthText" type="Node2D" parent="."]
+
+[node name="DamageText" type="Label" parent="healthText"]
+offset_left = -10.0
+offset_top = -32.0
+offset_right = 30.0
+offset_bottom = -4.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 20
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DamageAnimation" type="AnimationPlayer" parent="healthText"]
+libraries = {
+"": SubResource("AnimationLibrary_j35kp")
+}
 
 [connection signal="area_entered" from="DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]

@@ -1,10 +1,8 @@
-[gd_scene load_steps=45 format=3 uid="uid://cvgmnsftt3bn4"]
+[gd_scene load_steps=44 format=3 uid="uid://cvgmnsftt3bn4"]
 
 [ext_resource type="Texture2D" uid="uid://deolxoka5ttcc" path="res://Sprites/tooth walker sprite-Sheet.png" id="1_f68o1"]
 [ext_resource type="Script" path="res://Scripts/tooth_walker.gd" id="1_iog00"]
-[ext_resource type="Script" path="res://Scripts/mob_health.gd" id="3_51yci"]
-[ext_resource type="Texture2D" uid="uid://yfbd3c6algyf" path="res://Sprites/bar_under.png" id="4_qs7ua"]
-[ext_resource type="Texture2D" uid="uid://xm1pobiqrv6x" path="res://Sprites/bar_over.png" id="5_d4nhv"]
+[ext_resource type="PackedScene" uid="uid://cv85w822t7o8t" path="res://Scenes/mob_health.tscn" id="3_jnad5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tptvj"]
 
@@ -293,22 +291,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.766667, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -348,26 +334,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_kwqgm"]
@@ -395,18 +381,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Take_Hit"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_re0fb"]
@@ -455,6 +429,9 @@ size = Vector2(35, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wekvi"]
 size = Vector2(35, 10)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxfre"]
+radius = 218.009
+
 [node name="Tooth Walker" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_iog00")
@@ -467,6 +444,7 @@ position = Vector2(-4, -12)
 sprite_frames = SubResource("SpriteFrames_jtejy")
 animation = &"Attack"
 autoplay = "Idle"
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -501,32 +479,19 @@ position = Vector2(-0.5, -10)
 shape = SubResource("RectangleShape2D_wekvi")
 disabled = true
 
-[node name="MobHealth" type="Node2D" parent="."]
+[node name="MobHealth" parent="." instance=ExtResource("3_jnad5")]
 position = Vector2(0, -33)
 scale = Vector2(0.1, 0.1)
-script = ExtResource("3_51yci")
 
-[node name="HealthBar" type="TextureProgressBar" parent="MobHealth"]
-offset_left = -151.0
-offset_top = 3.0
-offset_right = 151.0
-offset_bottom = 43.0
-max_value = 5.0
-value = 2.0
-nine_patch_stretch = true
-texture_under = ExtResource("4_qs7ua")
-texture_progress = ExtResource("5_d4nhv")
-tint_progress = Color(0.878123, 0.406499, 0.279314, 1)
+[node name="ArgeZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
-[node name="damageText" type="Label" parent="MobHealth"]
-offset_left = -50.0
-offset_top = -69.0
-offset_right = 50.0
-theme_override_font_sizes/font_size = 50
-text = "20"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArgeZone"]
+shape = SubResource("CircleShape2D_fxfre")
 
 [connection signal="body_entered" from="AttackDirection/AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="area_entered" from="DamageBox/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="ArgeZone" to="." method="_on_arge_zone_body_entered"]
+[connection signal="body_exited" from="ArgeZone" to="." method="_on_arge_zone_body_exited"]

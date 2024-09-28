@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce1ljdh2jg2pt"]
+
+[ext_resource type="Texture2D" uid="uid://bqv4161jipl5h" path="res://Sprites/PauseMenuBG.PNG" id="1_tcqwg"]
+[ext_resource type="Texture2D" uid="uid://bt0gx7g4vb7u1" path="res://Sprites/menuButton.PNG" id="2_q5fh2"]
+[ext_resource type="FontFile" uid="uid://dv1656fo6s8ql" path="res://Fonts/Cruinn Black.ttf" id="3_12mah"]
+
+[node name="PauseMenu" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(487, 235)
+scale = Vector2(0.563636, 0.614545)
+texture = ExtResource("1_tcqwg")
+
+[node name="Button" type="Button" parent="BG"]
+modulate = Color(0.694118, 0.694118, 0.694118, 1)
+anchors_preset = -1
+anchor_left = -0.000139909
+anchor_top = -0.101212
+anchor_right = 0.472587
+anchor_bottom = 0.000606024
+offset_left = -182.665
+offset_top = -92.4102
+offset_right = -73.6649
+offset_bottom = -42.4102
+icon = ExtResource("2_q5fh2")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="BG/Button"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 71.0
+offset_top = 21.0
+offset_right = 298.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("3_12mah")
+theme_override_font_sizes/font_size = 30
+text = "Продолжить"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="BG"]
+modulate = Color(0.694118, 0.694118, 0.694118, 1)
+anchors_preset = -1
+anchor_left = 0.000652549
+anchor_top = -0.0922729
+anchor_right = 0.402471
+anchor_bottom = 0.000454393
+offset_left = -183.101
+offset_top = 32.6732
+offset_right = -35.1008
+offset_bottom = 84.6732
+icon = ExtResource("2_q5fh2")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="BG/Button2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 69.0
+offset_top = 21.0
+offset_right = 298.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("3_12mah")
+theme_override_font_sizes/font_size = 30
+text = "Управление"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="BG"]
+modulate = Color(0.694118, 0.694118, 0.694118, 1)
+anchors_preset = -1
+anchor_left = 0.0001833
+anchor_top = -0.0865387
+anchor_right = 0.402001
+anchor_bottom = 0.000734059
+offset_left = -183.101
+offset_top = 159.596
+offset_right = -35.1008
+offset_bottom = 211.596
+icon = ExtResource("2_q5fh2")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="BG/Button3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0177889
+anchor_top = 0.000833435
+anchor_right = -0.0801195
+anchor_bottom = -0.0891666
+offset_left = 77.5641
+offset_top = 22.9167
+offset_right = 329.564
+offset_bottom = 86.9167
+theme_override_fonts/font = ExtResource("3_12mah")
+theme_override_font_sizes/font_size = 30
+text = "Меню"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG"]
+offset_left = -97.5807
+offset_top = -226.183
+offset_right = 99.4193
+offset_bottom = -170.183
+theme_override_fonts/font = ExtResource("3_12mah")
+theme_override_font_sizes/font_size = 50
+text = "Пауза"
+horizontal_alignment = 1
+vertical_alignment = 1

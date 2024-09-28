@@ -10,13 +10,17 @@ enum {
 
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
+@onready var healthBar = $MobHealth
+@export var change_position = [4,-4]
 var damage = 3
+var speed = 200
 var direction
 var player
 var health = 6
 var state: int = 0:
 	set(value):
 		state = value
+		print(state)
 		match state:
 			IDLE:
 				idle_state()
@@ -32,7 +36,7 @@ var state: int = 0:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state = IDLE
-
+	healthBar.start_parameters(health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,25 +54,33 @@ func _on_attack_range_body_entered(_body: Node2D) -> void:
 	
 func idle_state():
 	animPlayer.play("Idle")
+	velocity.x = 0
 	await get_tree().create_timer(1).timeout
 	$AttackDirection/AttackRange/AttackCollision.disabled = false
-	state = CHASE
+	$ArgeZone/CollisionShape2D.disabled = false
 	
 func attack_state():
+	velocity.x = 0
 	animPlayer.play("Attack")
 	await animPlayer.animation_finished
 	$AttackDirection/AttackRange/AttackCollision.disabled = true
+	$ArgeZone/CollisionShape2D.disabled = true
 	state = IDLE
 	
 func chase_state():
-	direction = (player - self.position).normalized()
+	direction = (Global.player_pos - self.position).normalized()
+	velocity.x = direction.x * speed
+	if velocity.x != 0:
+		animPlayer.play("Walk")
+	else:
+		animPlayer.play("Idle")
 	if direction.x < 0:
 		sprite.flip_h = true
-		sprite.position.x = 4
+		sprite.position.x = change_position[0]
 		$AttackDirection.rotation_degrees = 360
 	elif direction.x > 0:
 		sprite.flip_h = false
-		sprite.position.x = -4
+		sprite.position.x = change_position[1]
 		$AttackDirection.rotation_degrees = 0
 
 func take_hit_state():
@@ -90,4 +102,14 @@ func _on_hit_box_area_entered(_area: Area2D) -> void:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if state != DEATH:
 		health -= Global.player_damage
+		healthBar.update_heath(health,Global.player_damage)
 		state = TAKE_HIT
+
+func _on_arge_zone_body_entered(body: Node2D) -> void:
+	if state != DEATH:
+		state = CHASE
+
+
+func _on_arge_zone_body_exited(body: Node2D) -> void:
+	if state != DEATH:
+		state = IDLE

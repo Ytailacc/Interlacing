@@ -1,9 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv85w822t7o8t"]
+[gd_scene load_steps=9 format=3 uid="uid://cv85w822t7o8t"]
 
 [ext_resource type="Script" path="res://Scripts/mob_health.gd" id="1_4ttul"]
-[ext_resource type="Texture2D" uid="uid://yfbd3c6algyf" path="res://Sprites/bar_under.png" id="1_gnww4"]
-[ext_resource type="Texture2D" uid="uid://xm1pobiqrv6x" path="res://Sprites/bar_over.png" id="2_o8asn"]
-[ext_resource type="FontFile" uid="uid://dv1656fo6s8ql" path="res://Fronts/Cruinn Black.ttf" id="4_a6o4u"]
+[ext_resource type="Texture2D" uid="uid://cj1m5548m1fri" path="res://Sprites/healthBarEnenmy_empty.PNG" id="2_87xg0"]
+[ext_resource type="Texture2D" uid="uid://dny8k6re40k2" path="res://Sprites/EnemyBarFrame.PNG" id="3_s17kl"]
+[ext_resource type="FontFile" uid="uid://dv1656fo6s8ql" path="res://Fonts/Cruinn Black.ttf" id="4_a6o4u"]
+[ext_resource type="Texture2D" uid="uid://byl4bx2scjltc" path="res://Sprites/EnemyBarOver.PNG" id="4_btxuv"]
+
+[sub_resource type="Animation" id="Animation_tmsc4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("damageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-50, -69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("damageText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2mmhw"]
 resource_name = "damage_text"
@@ -33,33 +61,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.658824), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_tmsc4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("damageText:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-50, -69)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("damageText:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3i16x"]
 _data = {
 "RESET": SubResource("Animation_tmsc4"),
@@ -70,24 +71,25 @@ _data = {
 script = ExtResource("1_4ttul")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -151.0
-offset_top = 3.0
-offset_right = 151.0
-offset_bottom = 43.0
+offset_left = -159.0
+offset_top = 18.0
+offset_right = 158.0
+offset_bottom = 99.0
 max_value = 5.0
 value = 2.0
 nine_patch_stretch = true
-texture_under = ExtResource("1_gnww4")
-texture_progress = ExtResource("2_o8asn")
+texture_under = ExtResource("2_87xg0")
+texture_over = ExtResource("3_s17kl")
+texture_progress = ExtResource("4_btxuv")
 tint_progress = Color(0.878123, 0.406499, 0.279314, 1)
 
 [node name="damageText" type="Label" parent="."]
 offset_left = -48.0
-offset_top = -136.0
-offset_right = 52.0
-offset_bottom = -67.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("4_a6o4u")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 100
 text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1

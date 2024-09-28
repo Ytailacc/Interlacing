@@ -1,7 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://c4dk1p3ka4wtf"]
+[gd_scene load_steps=67 format=3 uid="uid://c4dk1p3ka4wtf"]
 
 [ext_resource type="Texture2D" uid="uid://d3w12ayb55c7k" path="res://Sprites/EyeBall Monster-Sheet.png" id="1_3inp8"]
 [ext_resource type="Script" path="res://Scripts/eyeball_monster.gd" id="1_y3s0y"]
+[ext_resource type="PackedScene" uid="uid://cv85w822t7o8t" path="res://Scenes/mob_health.tscn" id="3_qx7f0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g20sp"]
 
@@ -605,7 +606,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 "
 
@@ -667,6 +668,10 @@ collision_mask = 32
 position = Vector2(36.5, 0)
 shape = SubResource("RectangleShape2D_0otu2")
 disabled = true
+
+[node name="MobHealth" parent="." instance=ExtResource("3_qx7f0")]
+position = Vector2(0, -20)
+scale = Vector2(0.1, 0.1)
 
 [connection signal="body_entered" from="AttackDirection/AttackCollition" to="." method="_on_attack_collition_body_entered"]
 [connection signal="body_entered" from="AttackDirection/PlayerDetector" to="." method="_on_player_detector_body_entered"]

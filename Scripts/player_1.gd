@@ -10,20 +10,23 @@ enum {
 	TAKE_HIT
 }
 
-var SPEED = 200
+var SPEED = 150
 const JUMP_VELOCITY = -400.0
 var state = MOVE
 @onready var anim = $AnimatedSprite2D
 @onready var  animPlayer = $AnimationPlayer
+@onready var animDamage = $healthText/DamageAnimation
+@onready var textDamage = $healthText/DamageText
 var health = 10
 var combo = false
 var combo2 = false
-var damage_current
 var damage_basic = 2
 var damage_multiplier = 1
 
 func _ready() -> void:
 	Signals.connect("enemy_attack",Callable(self,"_on_damage_recived"))
+	Global.player_health = health
+	textDamage.visible = false
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -137,6 +140,11 @@ func _on_damage_recived(enemy_damage):
 	if state != DEATH and state != SLIDE:
 		state = TAKE_HIT
 		health -= enemy_damage
+		Signals.emit_signal("player_health",health)
+		textDamage.visible = true
+		textDamage.text = str(enemy_damage)
+		animDamage.stop()
+		animDamage.play("damage_text")
 		print(health)
 
 func death_state():
@@ -145,4 +153,10 @@ func death_state():
 	animPlayer.play("Death")
 	await animPlayer.animation_finished
 	queue_free()
-	#get_tree().change_scene_to_file("")
+	
+func change_scene():
+	if Global.open_scene:
+		get_tree().change_scene_to_file(Global.open_scene.scene_file_path)
+	else:
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	

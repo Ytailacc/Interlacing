@@ -1,0 +1,110 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1727531861
+icon.svg::CompressedTexture2D::1931279757904791106::1727522298::1727531864::1::::<><>::
+::res://addons/::1727522298
+::res://addons/AS2P/::1727522298
+InspectorConvertor.gd::GDScript::-1::1727522298::0::1::::<>EditorInspectorPlugin<>::
+NodeSelectorProperty.gd::GDScript::-1::1727522298::0::1::::<>EditorProperty<>::
+plugin.cfg::TextFile::-1::1727522298::0::1::::<><>::
+plugin.gd::GDScript::-1::1727522298::0::1::::<>EditorPlugin<>::
+::res://examples/::1727522298
+audioDemo.gd::GDScript::-1::1727522298::0::1::::<>Control<>::
+Characters.tres::Resource/CharacterList::7778104419182407793::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/CharacterList.gd<>res://addons/dialogue_nodes/objects/Character.gd<>uid://b2hbqv3slgfxt::::res://examples/profile0.png
+Demo1.tscn::PackedScene::3953196385162369597::1727522298::0::1::::<><>::uid://dc6c1peo4pfyr::::res://addons/dialogue_nodes/themes/bubbly.theme<>res://examples/demo.gd<>uid://dj818hys8f3u8::::res://examples/ExampleBasic.tres<>uid://btriowhsx04c2::::res://examples/ExampleBBCodes.tres<>uid://bjme2drtas671::::res://examples/ExampleBranching.tres<>uid://c303qivlsn30t::::res://examples/ExampleCharacters.tres<>uid://b4os1qum2hx0x::::res://examples/ExampleSignals.tres<>uid://cbu4k4hs8fk5s::::res://examples/ExampleVariables.tres<>res://addons/dialogue_nodes/objects/DialogueBox.gd<>res://addons/dialogue_nodes/objects/bbcodeWait.gd<>res://addons/dialogue_nodes/objects/bbcodeGhost.gd<>res://addons/dialogue_nodes/objects/bbcodeMatrix.gd
+Demo2.tscn::PackedScene::7487747640125696941::1727522298::0::1::::<><>::uid://dc6c1peo4pfyr::::res://addons/dialogue_nodes/themes/bubbly.theme<>res://examples/audioDemo.gd<>res://addons/dialogue_nodes/objects/bbcodeWait.gd<>res://addons/dialogue_nodes/objects/bbcodeGhost.gd<>uid://c4ay241u6mexj::::res://examples/ExampleAudio.tres<>res://addons/dialogue_nodes/objects/DialogueBox.gd<>uid://bin1ei6yesmjv::::res://examples/voice.ogg<>res://addons/dialogue_nodes/objects/bbcodeMatrix.gd
+demo3.gd::GDScript::-1::1727522298::0::1::::<>Node3D<>::
+Demo3.tscn::PackedScene::7696864277374407590::1727522298::0::1::::<><>::res://examples/demo3.gd<>uid://bin1ei6yesmjv::::res://examples/voice.ogg<>uid://dq18l0hyb3bqt::::res://addons/dialogue_nodes/themes/bubblyClean.theme<>res://addons/dialogue_nodes/objects/bbcodeWait.gd<>res://addons/dialogue_nodes/objects/bbcodeGhost.gd<>res://addons/dialogue_nodes/objects/bbcodeMatrix.gd<>res://addons/dialogue_nodes/objects/DialogueBubble.gd<>uid://cwtdfv6yke8ri::::res://examples/ExampleBubble.tres
+demo.gd::GDScript::-1::1727522298::0::1::::<>Control<>::
+ExampleAudio.tres::Resource/DialogueData::6809824821443649527::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleBasic.tres::Resource/DialogueData::7860724088317280177::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleBasic_ja.tres::Resource/DialogueData::7335940044846027816::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleBBCodes.tres::Resource/DialogueData::3755615038868456459::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleBranching.tres::Resource/DialogueData::3043184078586350854::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleBubble.tres::Resource/DialogueData::6356411336681173582::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleCharacters.tres::Resource/DialogueData::6791467534754624381::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleSignals.tres::Resource/DialogueData::4451938646115500077::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+ExampleVariables.tres::Resource/DialogueData::4886097951687637358::1727522298::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
+profile0.png::CompressedTexture2D::4296060542971295061::1727522298::1727531864::1::::<><>::
+voice.ogg::AudioStreamOggVorbis::2976354597759940103::1727522298::1727531863::1::::<><>::
+::res://Fonts/::1727522298
+Cruinn Black.ttf::FontFile::8688839026302589743::1727522298::1727531863::1::::<><>::
+RubikGlitch-Regular.ttf::FontFile::3531862971511344982::1727522298::1727531863::1::::<><>::
+::res://Scenes/::1727531824
+BG.tscn::PackedScene::5388759745678971852::1727522298::0::1::::<><>::uid://drvlgqirs2tpv::::res://Sprites/background1.png<>uid://bjtaawca8n81a::::res://Sprites/background2.png<>uid://cyntscl6qegy4::::res://Sprites/background3.png<>uid://c8oj55osa1s7b::::res://Sprites/background4a.png
+damage_box.tscn::PackedScene::4638688693968468858::1727522298::0::1::::<><>::
+enemy.tscn::PackedScene::3910452707718655199::1727522298::0::1::::<><>::res://Scripts/enemy.gd<>uid://deolxoka5ttcc::::res://Sprites/tooth walker sprite-Sheet.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn
+esther_artefact.tscn::PackedScene::854236578850844454::1727522298::0::1::::<><>::uid://cm4omth44rv6q::::res://Sprites/book_02b.png
+eyeball_monster.tscn::PackedScene::6815165398280808459::1727522298::0::1::::<><>::uid://d3w12ayb55c7k::::res://Sprites/EyeBall Monster-Sheet.png<>res://Scripts/eyeball_monster.gd<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn
+gg_artefact.tscn::PackedScene::7769206255769933562::1727522298::0::1::::<><>::uid://cyou40mwxswd4::::res://Sprites/ring_03d.png
+Guardian.tscn::PackedScene::7092212164290483483::1727522298::0::1::::<><>::res://Scripts/Guardian.gd<>uid://bubr8ckvmnj85::::res://Sprites/Guardian Sprite-Sheet.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn
+lastBoss_1.tscn::PackedScene::3188420331480217157::1727522298::0::1::::<><>::res://Scripts/lastBoss_1.gd<>uid://ct3fwfvvx1pge::::res://Sprites/water_SpriteSheet_288x128.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn
+lastBoss_2.tscn::PackedScene::5448374439124015494::1727522298::0::1::::<><>::res://Scripts/lastBoss_2.gd<>uid://bwliwgl5okv8b::::res://Sprites/idle-2298x3084.png<>uid://pu31v345qd5g::::res://Sprites/Punch-2015x2582.png<>uid://dy76c8nubvtki::::res://Sprites/kick sprite.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn<>uid://7yfuwpiipe5v::::res://Sprites/Block.png<>uid://cd7kepklkptb::::res://Sprites/dead-3775x3508.png<>uid://ckuk4v0ohcg8w::::res://Sprites/Demaged-1.png<>uid://cma6iw0dtswk4::::res://Sprites/run-2480x3508.png
+level_1.tscn::PackedScene::159909019023206050::1727531675::0::1::::<><>::uid://dmgo5qw76j8oc::::res://TileMap/mainlev_build.png<>res://Scripts/level_1.gd<>uid://ci1mc6cq6cmeu::::res://Scenes/BG.tscn<>uid://dixpxr45yg57s::::res://Scenes/gg_artefact.tscn<>uid://mf2ffkm44ves::::res://Scenes/esther_artefact.tscn<>uid://bbyf5pti5hayd::::res://Scenes/player_2.tscn<>uid://dxoubd7e2ag54::::res://Scenes/player_health.tscn<>uid://bloq21qmrh5lp::::res://Scenes/lastBoss_1.tscn
+menu.tscn::PackedScene::6184952698989144514::1727522298::0::1::::<><>::uid://d2psrjnnbf6kb::::res://Sprites/IMG_2853.png<>uid://bqk4jc2ikmqcs::::res://Fonts/RubikGlitch-Regular.ttf<>uid://dv1656fo6s8ql::::res://Fonts/Cruinn Black.ttf<>uid://bt0gx7g4vb7u1::::res://Sprites/menuButton.PNG
+mob_health.tscn::PackedScene::6316794123151452285::1727522298::0::1::::<><>::res://Scripts/mob_health.gd<>uid://cj1m5548m1fri::::res://Sprites/healthBarEnenmy_empty.PNG<>uid://dny8k6re40k2::::res://Sprites/EnemyBarFrame.PNG<>uid://dv1656fo6s8ql::::res://Fonts/Cruinn Black.ttf<>uid://byl4bx2scjltc::::res://Sprites/EnemyBarOver.PNG
+pause_menu.tscn::PackedScene::5107954692232193373::1727522298::0::1::::<><>::uid://bqv4161jipl5h::::res://Sprites/PauseMenuBG.PNG<>uid://bt0gx7g4vb7u1::::res://Sprites/menuButton.PNG<>uid://dv1656fo6s8ql::::res://Fonts/Cruinn Black.ttf
+player_1.tscn::PackedScene::8904308568838007925::1727522298::0::1::::<><>::res://Scripts/player_1.gd<>uid://ct3fwfvvx1pge::::res://Sprites/water_SpriteSheet_288x128.png
+player_2.tscn::PackedScene::2506512569814932747::1727522298::0::1::::<><>::uid://bwliwgl5okv8b::::res://Sprites/idle-2298x3084.png<>res://Scripts/player_2.gd<>uid://cd7kepklkptb::::res://Sprites/dead-3775x3508.png<>uid://7yfuwpiipe5v::::res://Sprites/Block.png<>uid://cma6iw0dtswk4::::res://Sprites/run-2480x3508.png<>uid://qdxwabjde0gt::::res://Sprites/jump-1725x2033.png<>uid://pu31v345qd5g::::res://Sprites/Punch-2015x2582.png<>uid://ckuk4v0ohcg8w::::res://Sprites/Demaged-1.png
+player_health.tscn::PackedScene::8803723076181741537::1727522298::0::1::::<><>::uid://dl7aj20hofosm::::res://Sprites/PlayerUnder.PNG<>uid://b5xb76q8udiaw::::res://Sprites/PlayerFrame.PNG<>uid://jymnti0clqgp::::res://Sprites/PlayerProgress.PNG
+Small Monster.tscn::PackedScene::2562414192972411684::1727522298::0::1::::<><>::res://Scripts/Small Monster.gd<>uid://83l3s4y2hsv5::::res://Sprites/idle.png<>uid://ub6yt2payybt::::res://Sprites/attack.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn<>uid://dwnaesc3tcc5f::::res://Sprites/death.png<>uid://biol7bq14ygcf::::res://Sprites/damaged.png<>uid://c70shw4ibii86::::res://Sprites/run.png
+stormhead.tscn::PackedScene::4378482419638318730::1727522298::0::1::::<><>::res://Scripts/stormhead.gd<>uid://boq8qsrsj8ef7::::res://Sprites/small moidle.png<>uid://ctdepgcfikrpn::::res://Sprites/small modeath and damagedt.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn<>uid://c4c3t466fdpuo::::res://Sprites/small morun.png
+tooth_walker.tscn::PackedScene::6259946123577292299::1727522298::0::1::::<><>::uid://deolxoka5ttcc::::res://Sprites/tooth walker sprite-Sheet.png<>res://Scripts/tooth_walker.gd<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn
+trash_monster.tscn::PackedScene::1858147982020547495::1727522298::0::1::::<><>::res://Scripts/trash_monster.gd<>uid://b0d7exssjsvs6::::res://Sprites/Trash Monster-Sprite V2.png<>uid://cv85w822t7o8t::::res://Scenes/mob_health.tscn
+::res://Scripts/::1727522298
+enemy.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+eyeball_monster.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+global.gd::GDScript::-1::1727522298::0::1::::<>Node<>::
+Guardian.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+lastBoss_1.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+lastBoss_2.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+level_1.gd::GDScript::-1::1727522298::0::1::::<>Node2D<>::
+mob_health.gd::GDScript::-1::1727522298::0::1::::<>Node2D<>::
+player_1.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+player_2.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+signals.gd::GDScript::-1::1727522298::0::1::::<>Node<>::
+Small Monster.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+stormhead.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+tooth_walker.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+trash_monster.gd::GDScript::-1::1727522298::0::1::::<>CharacterBody2D<>::
+::res://Sprites/::1727522298
+attack.png::CompressedTexture2D::1407767376680059765::1727522298::1727531864::1::::<><>::
+background1.png::CompressedTexture2D::8396503780974547063::1727522298::1727531865::1::::<><>::
+background2.png::CompressedTexture2D::3057344612410489328::1727522298::1727531865::1::::<><>::
+background3.png::CompressedTexture2D::6485396416124200741::1727522298::1727531865::1::::<><>::
+background4a.png::CompressedTexture2D::7118576120896800281::1727522298::1727531865::1::::<><>::
+bar_over.png::CompressedTexture2D::1640722102701228369::1727522298::1727531865::1::::<><>::
+bar_under.png::CompressedTexture2D::1694921685609908357::1727522298::1727531865::1::::<><>::
+Block.png::CompressedTexture2D::2295928542416939865::1727522298::1727531867::1::::<><>::
+book_02b.png::CompressedTexture2D::5675846923450271674::1727522298::1727531867::1::::<><>::
+damaged.png::CompressedTexture2D::2977557832140830641::1727522298::1727531867::1::::<><>::
+dead-3775x3508.png::CompressedTexture2D::148531855980751683::1727522298::1727531891::1::::<><>::
+death.png::CompressedTexture2D::8730261614901987913::1727522298::1727531867::1::::<><>::
+Demaged-1.png::CompressedTexture2D::5516677459054628496::1727522298::1727531869::1::::<><>::
+EnemyBarFrame.PNG::CompressedTexture2D::238920154643485915::1727522298::1727531869::1::::<><>::
+EnemyBarOver.PNG::CompressedTexture2D::4095424915452318108::1727522298::1727531869::1::::<><>::
+EyeBall Monster-Sheet.png::CompressedTexture2D::9171592878942899266::1727522298::1727531869::1::::<><>::
+Guardian Sprite-Sheet.png::CompressedTexture2D::3793353175749146860::1727522298::1727531869::1::::<><>::
+healthBarEnenmy_empty.PNG::CompressedTexture2D::5458998581480657870::1727522298::1727531869::1::::<><>::
+healthBarEnenmy_full.PNG::CompressedTexture2D::131123927747254255::1727522298::1727531869::1::::<><>::
+idle-2298x3084.png::CompressedTexture2D::3953808755947649767::1727522298::1727531880::1::::<><>::
+idle.png::CompressedTexture2D::2374753297664969176::1727522298::1727531863::1::::<><>::
+IMG_2853.png::CompressedTexture2D::9086450253368092009::1727522298::1727531864::1::::<><>::
+jump-1725x2033.png::CompressedTexture2D::1130650411728152435::1727522298::1727531872::1::::<><>::
+kick sprite.png::CompressedTexture2D::8911741939149468064::1727522298::1727531891::1::::<><>::
+menuButton.PNG::CompressedTexture2D::3772025223245420602::1727522298::1727531863::1::::<><>::
+PauseMenuBG.PNG::CompressedTexture2D::3554603006977611335::1727522298::1727531863::1::::<><>::
+PlayerFrame.PNG::CompressedTexture2D::4539686198042118574::1727522298::1727531863::1::::<><>::
+PlayerProgress.PNG::CompressedTexture2D::681997489514784691::1727522298::1727531863::1::::<><>::
+PlayerUnder.PNG::CompressedTexture2D::7997416948460250576::1727522298::1727531863::1::::<><>::
+Punch-2015x2582.png::CompressedTexture2D::1095867863693896974::1727522298::1727531869::1::::<><>::
+ring_03d.png::CompressedTexture2D::6487542363786842139::1727522298::1727531863::1::::<><>::
+run-2480x3508.png::CompressedTexture2D::5617005198465833769::1727522298::1727531876::1::::<><>::
+run.png::CompressedTexture2D::7071600414760039217::1727522298::1727531863::1::::<><>::
+small modeath and damagedt.png::CompressedTexture2D::6112892503118626751::1727522298::1727531863::1::::<><>::
+small moidle.png::CompressedTexture2D::3404127744667426674::1727522298::1727531863::1::::<><>::
+small morun.png::CompressedTexture2D::6814182166760321658::1727522298::1727531863::1::::<><>::
+tooth walker sprite-Sheet.png::CompressedTexture2D::7469628425184318346::1727522298::1727531863::1::::<><>::
+Trash Monster-Sprite V2.png::CompressedTexture2D::4149286231524366263::1727522298::1727531863::1::::<><>::
+water_SpriteSheet_288x128.png::CompressedTexture2D::6164575142095793708::1727522298::1727531867::1::::<><>::
+::res://TileMap/::1727522298
+mainlev_build.png::CompressedTexture2D::8014818928830979610::1727522298::1727531864::1::::<><>::

@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://1qdoqhb51ap0"]
+[gd_scene load_steps=55 format=3 uid="uid://1qdoqhb51ap0"]
 
 [ext_resource type="Script" path="res://Scripts/trash_monster.gd" id="1_c1g3d"]
 [ext_resource type="Texture2D" uid="uid://b0d7exssjsvs6" path="res://Sprites/Trash Monster-Sprite V2.png" id="1_ss6dp"]
+[ext_resource type="PackedScene" uid="uid://cv85w822t7o8t" path="res://Scenes/mob_health.tscn" id="3_2tgg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smbvc"]
 size = Vector2(38, 27)
@@ -512,6 +513,9 @@ size = Vector2(52, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y25b"]
 size = Vector2(52, 20)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rg46d"]
+radius = 127.035
+
 [node name="Trash_monster" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_c1g3d")
@@ -523,7 +527,7 @@ shape = SubResource("RectangleShape2D_smbvc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -2)
 sprite_frames = SubResource("SpriteFrames_65i7y")
-animation = &"Take_Hit"
+animation = &"Attack"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -559,6 +563,19 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_2y25b")
 disabled = true
 
+[node name="MobHealth" parent="." instance=ExtResource("3_2tgg5")]
+position = Vector2(0, -31)
+scale = Vector2(0.1, 0.1)
+
+[node name="AgreZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgreZone"]
+shape = SubResource("CircleShape2D_rg46d")
+
 [connection signal="body_entered" from="AttackDirection/AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="area_entered" from="DamageBox/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="AgreZone" to="." method="_on_agre_zone_body_entered"]
+[connection signal="body_exited" from="AgreZone" to="." method="_on_agre_zone_body_exited"]
