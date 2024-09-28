@@ -1,17 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce1ljdh2jg2pt"]
+[gd_scene load_steps=5 format=3 uid="uid://ce1ljdh2jg2pt"]
 
 [ext_resource type="Texture2D" uid="uid://bqv4161jipl5h" path="res://Sprites/PauseMenuBG.PNG" id="1_tcqwg"]
 [ext_resource type="Texture2D" uid="uid://bt0gx7g4vb7u1" path="res://Sprites/menuButton.PNG" id="2_q5fh2"]
 [ext_resource type="FontFile" uid="uid://dv1656fo6s8ql" path="res://Fonts/Cruinn Black.ttf" id="3_12mah"]
 
+[sub_resource type="GDScript" id="GDScript_nnhli"]
+script/source = "extends Node2D
+
+@onready var menu = $\"..\"
+var game_pause
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		game_pause = !game_pause
+
+	if game_pause:
+		get_tree().paused = true
+		menu.show()
+	else:
+		get_tree().paused = false
+		await get_tree().create_timer(0.001).timeout
+		menu.hide()
+
+func _on_play_pressed() -> void:
+	game_pause = false
+
+
+func _on_menu_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://Scenes/menu.tscn\")
+"
+
 [node name="PauseMenu" type="Node2D"]
+process_mode = 2
+
+[node name="Manager" type="Node2D" parent="."]
+process_mode = 3
+script = SubResource("GDScript_nnhli")
 
 [node name="BG" type="Sprite2D" parent="."]
-position = Vector2(487, 235)
+position = Vector2(962, 501)
 scale = Vector2(0.563636, 0.614545)
 texture = ExtResource("1_tcqwg")
 
-[node name="Button" type="Button" parent="BG"]
+[node name="Play" type="Button" parent="BG"]
 modulate = Color(0.694118, 0.694118, 0.694118, 1)
 anchors_preset = -1
 anchor_left = -0.000139909
@@ -26,11 +58,11 @@ icon = ExtResource("2_q5fh2")
 flat = true
 expand_icon = true
 
-[node name="Label" type="Label" parent="BG/Button"]
+[node name="Label" type="Label" parent="BG/Play"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 71.0
-offset_top = 21.0
+offset_top = 24.0
 offset_right = 298.0
 offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("3_12mah")
@@ -39,7 +71,7 @@ text = "Продолжить"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="BG"]
+[node name="Settings" type="Button" parent="BG"]
 modulate = Color(0.694118, 0.694118, 0.694118, 1)
 anchors_preset = -1
 anchor_left = 0.000652549
@@ -55,11 +87,11 @@ flat = true
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="BG/Button2"]
+[node name="Label2" type="Label" parent="BG/Settings"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 69.0
-offset_top = 21.0
+offset_left = 71.0
+offset_top = 23.0
 offset_right = 298.0
 offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("3_12mah")
@@ -68,7 +100,7 @@ text = "Управление"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button3" type="Button" parent="BG"]
+[node name="Menu" type="Button" parent="BG"]
 modulate = Color(0.694118, 0.694118, 0.694118, 1)
 anchors_preset = -1
 anchor_left = 0.0001833
@@ -84,14 +116,14 @@ flat = true
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="BG/Button3"]
+[node name="Label3" type="Label" parent="BG/Menu"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0177889
-anchor_top = 0.000833435
-anchor_right = -0.0801195
-anchor_bottom = -0.0891666
+anchor_top = -0.019167
+anchor_right = -0.0801192
+anchor_bottom = -0.089167
 offset_left = 77.5641
 offset_top = 22.9167
 offset_right = 329.564
@@ -113,3 +145,6 @@ theme_override_font_sizes/font_size = 50
 text = "Пауза"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="BG/Play" to="Manager" method="_on_play_pressed"]
+[connection signal="pressed" from="BG/Menu" to="Manager" method="_on_menu_pressed"]
