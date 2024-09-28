@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxoubd7e2ag54"]
+[gd_scene load_steps=5 format=3 uid="uid://dxoubd7e2ag54"]
 
-[ext_resource type="Texture2D" uid="uid://yfbd3c6algyf" path="res://Sprites/bar_under.png" id="1_t04rn"]
-[ext_resource type="Texture2D" uid="uid://xm1pobiqrv6x" path="res://Sprites/bar_over.png" id="2_bdvrg"]
+[ext_resource type="Texture2D" uid="uid://dl7aj20hofosm" path="res://Sprites/PlayerUnder.PNG" id="1_aeu2d"]
+[ext_resource type="Texture2D" uid="uid://b5xb76q8udiaw" path="res://Sprites/PlayerFrame.PNG" id="2_srltx"]
+[ext_resource type="Texture2D" uid="uid://jymnti0clqgp" path="res://Sprites/PlayerProgress.PNG" id="3_rx14f"]
 
 [sub_resource type="GDScript" id="GDScript_swkj1"]
 script/source = "extends Node2D
@@ -23,10 +24,11 @@ script = SubResource("GDScript_swkj1")
 [node name="damageBar" type="TextureProgressBar" parent="."]
 offset_left = 22.0
 offset_top = 30.0
-offset_right = 258.0
-offset_bottom = 70.0
+offset_right = 290.0
+offset_bottom = 97.0
 value = 50.0
 nine_patch_stretch = true
-texture_under = ExtResource("1_t04rn")
-texture_progress = ExtResource("2_bdvrg")
+texture_under = ExtResource("1_aeu2d")
+texture_over = ExtResource("2_srltx")
+texture_progress = ExtResource("3_rx14f")
 tint_progress = Color(0.872375, 0.340851, 0.280354, 1)

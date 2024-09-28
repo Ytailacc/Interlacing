@@ -1,12 +1,17 @@
-[gd_scene load_steps=10 format=4 uid="uid://cjpxb8g1bbdq"]
+[gd_scene load_steps=12 format=4 uid="uid://cjpxb8g1bbdq"]
 
 [ext_resource type="Texture2D" uid="uid://dmgo5qw76j8oc" path="res://TileMap/mainlev_build.png" id="1_atuxw"]
-[ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_uxina"]
+[ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_uxina"]
 [ext_resource type="PackedScene" uid="uid://ci1mc6cq6cmeu" path="res://Scenes/BG.tscn" id="3_fmp8n"]
-[ext_resource type="PackedScene" uid="uid://bbyf5pti5hayd" path="res://Scenes/player_2.tscn" id="6_1puka"]
 [ext_resource type="PackedScene" uid="uid://dixpxr45yg57s" path="res://Scenes/gg_artefact.tscn" id="6_pc3an"]
 [ext_resource type="PackedScene" uid="uid://mf2ffkm44ves" path="res://Scenes/esther_artefact.tscn" id="7_33gdd"]
+[ext_resource type="PackedScene" uid="uid://bbyf5pti5hayd" path="res://Scenes/player_2.tscn" id="7_b5m6d"]
 [ext_resource type="PackedScene" uid="uid://dxoubd7e2ag54" path="res://Scenes/player_health.tscn" id="8_5nuyc"]
+[ext_resource type="PackedScene" uid="uid://bloq21qmrh5lp" path="res://Scenes/lastBoss_1.tscn" id="8_kbked"]
+
+[sub_resource type="GDScript" id="GDScript_hdl0j"]
+script/source = "extends Node2D
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfo04"]
 texture = ExtResource("1_atuxw")
@@ -947,6 +952,9 @@ sources/0 = SubResource("TileSetAtlasSource_yfo04")
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_uxina")
 
+[node name="Manager" type="Node2D" parent="."]
+script = SubResource("GDScript_hdl0j")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAEACIAAAAOABcAAAAEACMAAAAOABgAAAAFACIAAAAPABcAAAAFACMAAAAPABgAAAAGACIAAAARABcAAAAGACMAAAARABgAAAAHACIAAAATABcAAAAHACMAAAATABgAAAAIACIAAAAVABcAAAAIACMAAAAVABgAAAAJACIAAAAWABcAAAAJACMAAAAWABgAAAADACMAAAAMABgAAAADACIAAAAMABcAAAAKACIAAAAYABcAAAAKACMAAAAYABgAAAALACIAAAAZABcAAAALACMAAAAZABgAAAAMACIAAAAbABcAAAAMACMAAAAbABgAAAANACIAAAAcABcAAAANACMAAAAcABgAAAAOACIAAAARABcAAAAOACMAAAARABgAAAAPACIAAAAVABcAAAAPACMAAAAVABgAAAAQACIAAAAOABcAAAAQACMAAAAOABgAAAARACIAAAAPABcAAAARACMAAAAPABgAAAASACIAAAARABcAAAASACMAAAARABgAAAATACIAAAATABcAAAATACMAAAATABgAAAAUACIAAAAVABcAAAAUACMAAAAVABgAAAAVACIAAAAWABcAAAAVACMAAAAWABgAAAAWACIAAAAYABcAAAAWACMAAAAYABgAAAAXACIAAAAZABcAAAAXACMAAAAZABgAAAAYACIAAAAbABcAAAAYACMAAAAbABgAAAAZACIAAAAcABcAAAAZACMAAAAcABgAAAAaACIAAAARABcAAAAaACMAAAARABgAAAAbACIAAAAVABcAAAAbACMAAAAVABgAAAAcACIAAAAOABcAAAAcACMAAAAOABgAAAAdACIAAAAPABcAAAAdACMAAAAPABgAAAAeACIAAAARABcAAAAeACMAAAARABgAAAAfACIAAAATABcAAAAfACMAAAATABgAAAAgACIAAAAVABcAAAAgACMAAAAVABgAAAAhACIAAAAWABcAAAAhACMAAAAWABgAAAAiACIAAAAYABcAAAAiACMAAAAYABgAAAAjACIAAAAZABcAAAAjACMAAAAZABgAAAAkACIAAAAbABcAAAAkACMAAAAbABgAAAAlACIAAAAcABcAAAAlACMAAAAcABgAAAAmACIAAAARABcAAAAmACMAAAARABgAAAAnACIAAAAVABcAAAAnACMAAAAVABgAAAAoACIAAAAOABcAAAAoACMAAAAOABgAAAApACIAAAAPABcAAAApACMAAAAPABgAAAAqACIAAAARABcAAAAqACMAAAARABgAAAArACIAAAATABcAAAArACMAAAATABgAAAAsACIAAAAVABcAAAAsACMAAAAVABgAAAAtACIAAAAWABcAAAAtACMAAAAWABgAAAAuACIAAAAYABcAAAAuACMAAAAYABgAAAAvACIAAAAZABcAAAAvACMAAAAZABgAAAAwACIAAAAbABcAAAAwACMAAAAbABgAAAAxACIAAAAcABcAAAAxACMAAAAcABgAAAAyACIAAAAVABcAAAAyACMAAAAVABgAAAAzACIAAAAOABcAAAAzACMAAAAOABgAAAA0ACIAAAAPABcAAAA0ACMAAAAPABgAAAA1ACIAAAARABcAAAA1ACMAAAARABgAAAA2ACIAAAATABcAAAA2ACMAAAATABgAAAA3ACIAAAAVABcAAAA3ACMAAAAVABgAAAA4ACIAAAAWABcAAAA4ACMAAAAWABgAAAA5ACIAAAAYABcAAAA5ACMAAAAYABgAAAA6ACIAAAAZABcAAAA6ACMAAAAZABgAAAA7ACIAAAAbABcAAAA7ACMAAAAbABgAAAA8ACIAAAAcABcAAAA8ACMAAAAcABgAAAA9ACIAAAARABcAAAA9ACMAAAARABgAAAA=")
 tile_set = SubResource("TileSet_swkvb")
@@ -966,5 +974,8 @@ position = Vector2(588, 532)
 
 [node name="Health" parent="UI" instance=ExtResource("8_5nuyc")]
 
-[node name="Player_2" parent="." instance=ExtResource("6_1puka")]
-position = Vector2(396, 529)
+[node name="Player_2" parent="." instance=ExtResource("7_b5m6d")]
+position = Vector2(315, 527)
+
+[node name="lastBoss_1" parent="." instance=ExtResource("8_kbked")]
+position = Vector2(632, 529)

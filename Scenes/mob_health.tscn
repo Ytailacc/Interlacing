@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv85w822t7o8t"]
+[gd_scene load_steps=9 format=3 uid="uid://cv85w822t7o8t"]
 
 [ext_resource type="Script" path="res://Scripts/mob_health.gd" id="1_4ttul"]
-[ext_resource type="Texture2D" uid="uid://yfbd3c6algyf" path="res://Sprites/bar_under.png" id="1_gnww4"]
-[ext_resource type="Texture2D" uid="uid://xm1pobiqrv6x" path="res://Sprites/bar_over.png" id="2_o8asn"]
+[ext_resource type="Texture2D" uid="uid://cj1m5548m1fri" path="res://Sprites/healthBarEnenmy_empty.PNG" id="2_87xg0"]
+[ext_resource type="Texture2D" uid="uid://dny8k6re40k2" path="res://Sprites/EnemyBarFrame.PNG" id="3_s17kl"]
 [ext_resource type="FontFile" uid="uid://dv1656fo6s8ql" path="res://Fonts/Cruinn Black.ttf" id="4_a6o4u"]
+[ext_resource type="Texture2D" uid="uid://byl4bx2scjltc" path="res://Sprites/EnemyBarOver.PNG" id="4_btxuv"]
 
 [sub_resource type="Animation" id="Animation_tmsc4"]
 length = 0.001
@@ -70,15 +71,16 @@ _data = {
 script = ExtResource("1_4ttul")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -151.0
-offset_top = 3.0
-offset_right = 151.0
-offset_bottom = 43.0
+offset_left = -159.0
+offset_top = 18.0
+offset_right = 158.0
+offset_bottom = 99.0
 max_value = 5.0
 value = 2.0
 nine_patch_stretch = true
-texture_under = ExtResource("1_gnww4")
-texture_progress = ExtResource("2_o8asn")
+texture_under = ExtResource("2_87xg0")
+texture_over = ExtResource("3_s17kl")
+texture_progress = ExtResource("4_btxuv")
 tint_progress = Color(0.878123, 0.406499, 0.279314, 1)
 
 [node name="damageText" type="Label" parent="."]

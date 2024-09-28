@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bbyf5pti5hayd"]
+[gd_scene load_steps=61 format=3 uid="uid://bbyf5pti5hayd"]
 
 [ext_resource type="Texture2D" uid="uid://bwliwgl5okv8b" path="res://Sprites/idle-2298x3084.png" id="1_80l0a"]
 [ext_resource type="Script" path="res://Scripts/player_2.gd" id="1_cossb"]
@@ -443,6 +443,60 @@ tracks/1/keys = {
 "values": ["Jump"]
 }
 
+[sub_resource type="Animation" id="Animation_ylywr"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Punch"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_aannk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_xtrb5"]
 length = 0.857143
 loop_mode = 1
@@ -497,6 +551,18 @@ tracks/1/keys = {
 "update": 1,
 "values": ["Take_Hit"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageBox/HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aydq1"]
 _data = {
@@ -505,6 +571,8 @@ _data = {
 "Fall": SubResource("Animation_otmnj"),
 "Idle": SubResource("Animation_t4gaj"),
 "Jump": SubResource("Animation_75rfp"),
+"Punch": SubResource("Animation_ylywr"),
+"RESET": SubResource("Animation_aannk"),
 "Run": SubResource("Animation_xtrb5"),
 "Take_Hit": SubResource("Animation_8ci3f")
 }
@@ -576,14 +644,17 @@ script/source = "extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$HitBox/CollisionShape2D.disabled = true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 "
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8dvjd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4h5t3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27ggc"]
 
 [node name="Player_2" type="CharacterBody2D"]
 collision_layer = 2
@@ -596,7 +667,7 @@ shape = SubResource("CapsuleShape2D_guyav")
 position = Vector2(0, -2)
 scale = Vector2(0.0131636, 0.0131636)
 sprite_frames = SubResource("SpriteFrames_ygcyv")
-animation = &"Jump"
+animation = &"Punch"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -43)
@@ -636,4 +707,13 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox/HurtBox"]
-shape = SubResource("CapsuleShape2D_8dvjd")
+shape = SubResource("CircleShape2D_4h5t3")
+
+[node name="HitBox" type="Area2D" parent="DamageBox"]
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox/HitBox"]
+position = Vector2(10, 0)
+shape = SubResource("CircleShape2D_27ggc")
+disabled = true

@@ -5,6 +5,7 @@ var SPEED = 150
 const JUMP_VELOCITY = -400.0
 var state = MOVE
 var health = 1
+var damage = 4
 @onready var animPlayer = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var animDamage = $healthText/DamageAnimation
@@ -14,7 +15,8 @@ enum {
 	MOVE,
 	BLOCK,
 	DEATH,
-	TAKE_HIT
+	TAKE_HIT,
+	ATTACK
 }
 
 func _ready() -> void:
@@ -32,6 +34,8 @@ func _physics_process(delta: float) -> void:
 			take_hit_state()
 		DEATH:
 			death_state()
+		ATTACK:
+			attack_state()
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -52,6 +56,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	Global.player_pos = position
+	Global.player_damage = damage
 	
 func move_state():
 	var direction := Input.get_axis("left", "right")
@@ -70,10 +75,10 @@ func move_state():
 	
 	if direction == 1:
 		sprite.flip_h = true
-		#$DamageBox.rotation_degrees = 0
+		$DamageBox.rotation_degrees = 0
 	elif direction == -1:
 		sprite.flip_h = false
-		#$DamageBox.rotation_degrees = 180
+		$DamageBox.rotation_degrees = 180
 		
 	if velocity.y > 0:
 		animPlayer.play("Fall")
@@ -87,8 +92,12 @@ func move_state():
 	if Input.is_action_pressed("slide"):
 		if velocity.y == 0:
 			state = BLOCK
+	
+	if Input.is_action_pressed("attack"):
+		state = ATTACK
 			
 func block_state():
+	velocity.x = 0
 	SPEED = 0
 	animPlayer.play("Block")
 	if Input.is_action_just_released("slide"):
@@ -96,6 +105,7 @@ func block_state():
 		state = MOVE
 		
 func take_hit_state():
+	velocity.x = 0
 	if health <= 0:
 		state = DEATH
 	SPEED = 0
@@ -105,12 +115,22 @@ func take_hit_state():
 	state = MOVE
 	
 func death_state():
+	velocity.x = 0
 	SPEED = 0
 	health = 0
 	animPlayer.play("Death")
 	await animPlayer.animation_finished
 	queue_free()
 
+func attack_state():
+	velocity.x = 0
+	SPEED = 0
+	sprite.scale.x = 0.018
+	sprite.scale.y = 0.018
+	animPlayer.play("Punch")
+	await animPlayer.animation_finished
+	SPEED = 150
+	state = MOVE
 	
 func _on_damage_recived(enemy_damage):
 	if state != DEATH and state != BLOCK:
