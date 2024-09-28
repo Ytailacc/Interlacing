@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5kgp5m53ub33"]
+
+[ext_resource type="Texture2D" uid="uid://hbxaif8c2xa8" path="res://Sprites/DialogBox.PNG" id="1_q50p7"]
+[ext_resource type="FontFile" uid="uid://dv1656fo6s8ql" path="res://Fonts/Cruinn Black.ttf" id="1_qipey"]
+[ext_resource type="Texture2D" uid="uid://i27qblvgp1xr" path="res://Sprites/gg_cloak.png" id="3_oqiv1"]
+[ext_resource type="Texture2D" uid="uid://bgroxwho206t5" path="res://Sprites/sister.png" id="4_mvfam"]
+
+[sub_resource type="GDScript" id="GDScript_8j0mm"]
+script/source = "extends Node2D
+
+@onready var dialogText = $DialogBox/DialogText
+@onready var dialogName = $DialogBox/DialogName
+@onready var firstSpeeker = $DialogBox/FirstSpeeker
+@onready var secondSpeeker = $DialogBox/SecondSpeeker
+var gg_smile:Texture2D = load(\"res://Sprites/ring_03d.png\")
+var gg_usial:Texture2D = load(\"res://Sprites/gg_cloak.png\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	first_dialog()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func first_dialog():
+	dialogName.text = \"Саша\"
+	dialogText.text = \"Привет\"
+	firstSpeeker.texture = gg_smile
+	await get_tree().create_timer(3).timeout
+	dialogName.text = \"Сестра\"
+	dialogText.text = \"Привет!\"
+	firstSpeeker.texture = gg_usial
+	
+	
+"
+
+[node name="Dilalogue" type="Node2D"]
+script = SubResource("GDScript_8j0mm")
+
+[node name="DialogBox" type="TextureRect" parent="."]
+offset_left = -3.0
+offset_top = 806.0
+offset_right = 1918.0
+offset_bottom = 1210.0
+texture = ExtResource("1_q50p7")
+
+[node name="DialogText" type="Label" parent="DialogBox"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 54.0
+offset_top = 87.0
+offset_right = 1873.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("1_qipey")
+theme_override_font_sizes/font_size = 60
+text = "Текст диалога"
+
+[node name="DialogName" type="Label" parent="DialogBox"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 730.0
+offset_top = 22.0
+offset_right = 1205.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("1_qipey")
+theme_override_font_sizes/font_size = 50
+text = "Имя"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstSpeeker" type="TextureRect" parent="DialogBox"]
+offset_left = -144.0
+offset_top = -1072.0
+offset_right = 1776.0
+offset_bottom = 8.0
+texture = ExtResource("3_oqiv1")
+
+[node name="SecondSpeeker" type="TextureRect" parent="DialogBox"]
+offset_left = 219.0
+offset_top = -1072.0
+offset_right = 2139.0
+offset_bottom = 8.0
+texture = ExtResource("4_mvfam")

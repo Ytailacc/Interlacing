@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbids1jqcuell"]
+
+[ext_resource type="Texture2D" uid="uid://bk5qle3u5wevv" path="res://Sprites/blackBG.png" id="1_760vp"]
+[ext_resource type="Texture2D" uid="uid://5aidw7bmvwqr" path="res://Sprites/cutscene_1.png" id="2_14jmg"]
+[ext_resource type="Texture2D" uid="uid://cm4omth44rv6q" path="res://Sprites/book_02b.png" id="2_16207"]
+[ext_resource type="Texture2D" uid="uid://cyou40mwxswd4" path="res://Sprites/ring_03d.png" id="3_1vld3"]
+
+[sub_resource type="GDScript" id="GDScript_yegfc"]
+script/source = "extends Node2D
+
+@onready var animPlay = $AnimationPlayer
+@onready var text = $Text
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	await get_tree().create_timer(2).timeout
+	animPlay.play(\"text_animation\")
+	await animPlay.animation_finished
+	animPlay.play(\"firstSlide\")
+	await animPlay.animation_finished
+	animPlay.play(\"secondSlide\")
+	await animPlay.animation_finished
+	
+	animPlay.play(\"thirdSlide\")
+	await animPlay.animation_finished
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_35cay"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Text:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h1g8h"]
+resource_name = "firstSlide"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s582a"]
+resource_name = "secondSlide"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l37j3"]
+resource_name = "text_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3hbm1"]
+resource_name = "thirdSlide"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhw4c"]
+_data = {
+"RESET": SubResource("Animation_35cay"),
+"firstSlide": SubResource("Animation_h1g8h"),
+"secondSlide": SubResource("Animation_s582a"),
+"text_animation": SubResource("Animation_l37j3"),
+"thirdSlide": SubResource("Animation_3hbm1")
+}
+
+[node name="Сutscene" type="Node2D"]
+script = SubResource("GDScript_yegfc")
+
+[node name="BG" type="TextureRect" parent="."]
+offset_right = 1925.0
+offset_bottom = 1087.0
+texture = ExtResource("1_760vp")
+
+[node name="TextureRect1" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 128.0
+offset_top = 134.0
+offset_right = 682.0
+offset_bottom = 852.0
+texture = ExtResource("2_14jmg")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 756.0
+offset_top = 113.0
+offset_right = 1277.0
+offset_bottom = 928.0
+texture = ExtResource("3_1vld3")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1296.0
+offset_top = 113.0
+offset_right = 1817.0
+offset_bottom = 928.0
+texture = ExtResource("2_16207")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yhw4c")
+}
+
+[node name="Text" type="Label" parent="."]
+offset_left = 386.0
+offset_top = 413.0
+offset_right = 1594.0
+offset_bottom = 744.0
+theme_override_font_sizes/font_size = 50
+text = "Болит голова, опять таблетки забыл выпить"

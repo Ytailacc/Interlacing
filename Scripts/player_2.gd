@@ -115,6 +115,8 @@ func take_hit_state():
 	state = MOVE
 	
 func death_state():
+	sprite.scale.x = 0.013
+	sprite.scale.y = 0.013
 	velocity.x = 0
 	SPEED = 0
 	health = 0

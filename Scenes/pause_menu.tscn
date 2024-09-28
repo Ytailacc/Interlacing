@@ -10,7 +10,7 @@ script/source = "extends Node2D
 @onready var menu = $\"..\"
 var game_pause
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		game_pause = !game_pause
 
@@ -120,8 +120,8 @@ metadata/_edit_use_anchors_ = true
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0177889
-anchor_top = -0.019167
+anchor_left = -0.0801192
+anchor_top = -0.089167
 anchor_right = -0.0801192
 anchor_bottom = -0.089167
 offset_left = 77.5641
